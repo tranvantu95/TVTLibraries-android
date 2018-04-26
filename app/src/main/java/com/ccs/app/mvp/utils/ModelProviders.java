@@ -1,4 +1,4 @@
-package com.ccs.app.mvp;
+package com.ccs.app.mvp.utils;
 
 import android.app.Application;
 import android.arch.lifecycle.ViewModelProvider;

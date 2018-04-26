@@ -1,4 +1,4 @@
-package com.ccs.app.base;
+package com.ccs.app.mvp;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.ccs.app.base", appContext.getPackageName());
+        assertEquals("com.ccs.app.mvp", appContext.getPackageName());
     }
 }

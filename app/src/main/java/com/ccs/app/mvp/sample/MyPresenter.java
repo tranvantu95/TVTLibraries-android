@@ -16,6 +16,14 @@ public class MyPresenter extends ListPresenter<String, MyModel, MyPresenter.Call
         model.setPresenter(this);
     }
 
+    @Override
+    public void onItemClick(int position) {
+        super.onItemClick(position);
+
+        view.showToast(model.getItems().get(position));
+    }
+
     public interface Callback extends ListPresenter.Callback<String> {
+        void showToast(String text);
     }
 }

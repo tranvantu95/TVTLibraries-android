@@ -1,11 +1,11 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 26
+    compileSdkVersion rootProject.ext.compileSdkVersion
     defaultConfig {
-        applicationId "com.ccs.app.base"
+        applicationId "com.ccs.app.mvp"
         minSdkVersion 14
-        targetSdkVersion 26
+        targetSdkVersion rootProject.ext.compileSdkVersion
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -19,9 +19,16 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support:appcompat-v7:26.1.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+
+    // recycler view
+    implementation 'com.android.support:recyclerview-v7:26.1.0'
+
+    // lifecycle
+    implementation "android.arch.lifecycle:extensions:${rootProject.ext.lifecycleVersion}"
+    annotationProcessor "android.arch.lifecycle:compiler:${rootProject.ext.lifecycleVersion}"
 }

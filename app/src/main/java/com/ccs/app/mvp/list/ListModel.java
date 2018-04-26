@@ -27,6 +27,8 @@ public class ListModel<Item, P extends ListModel.Callback<Item>> extends Model<P
         }
     });
 
+    private Item oldItem;
+
     @Nullable
     public LiveData<Item> getItem(@Nullable final Integer index) {
         return Transformations.map(items, new Function<List<Item>, Item>() {
@@ -58,7 +60,8 @@ public class ListModel<Item, P extends ListModel.Callback<Item>> extends Model<P
         return index.getValue();
     }
 
-    public void setIndex(@Nullable Integer index) {
+    public void setIndex(int index) {
+        if(getIndex() != null && getIndex() == index) return;
         this.index.setValue(index);
     }
 
@@ -85,6 +88,8 @@ public class ListModel<Item, P extends ListModel.Callback<Item>> extends Model<P
         item.observe(owner, new Observer<Item>() {
             @Override
             public void onChanged(@Nullable Item item) {
+                if(oldItem == null && item == null || oldItem != null && oldItem.equals(item)) return;
+                oldItem = item;
                 presenter.onItemChange(item);
             }
         });

@@ -1,4 +1,4 @@
-package com.ccs.app.base;
+package com.ccs.app.mvp;
 
 import org.junit.Test;
 
